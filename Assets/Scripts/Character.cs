@@ -13,7 +13,7 @@ namespace TextRPG
         // Used to define where our character is in the dungeon
         // Ex: (4, 7)
         public Vector2 RoomIndex { get; set; }
-        public List<string> Inventory { get; set; }
+        public List<string> Inventory { get; set; } = new List<string>();
 
         // virtual allows and inherited class to override this method
         public virtual  void TakeDamage(int amount)
@@ -27,7 +27,7 @@ namespace TextRPG
 
         public virtual void Die()
         {
-            Debug.Log("The Character is Dead!")
+            Debug.Log("The Character is Dead!");
         }
     }
 }
