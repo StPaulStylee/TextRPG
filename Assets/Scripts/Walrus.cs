@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TextRPG
 {
-    public class Raccoon : Enemy
+    public class Walrus : Enemy
     {
         // Start is called before the first frame update
         void Start()
