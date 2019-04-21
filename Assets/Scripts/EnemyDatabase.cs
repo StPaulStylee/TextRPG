@@ -23,10 +23,16 @@ namespace TextRPG
             // This is the same as doing a foreach loop over a specified collection
             // One disadvantage of doing this is you can't really log details during development
             Enemies.AddRange(GetComponents<Enemy>());
+            // For Dev only
             foreach(Enemy enemy in GetComponents<Enemy>())
             {
                 Debug.Log("Found enemy of type " + enemy.GetType());
             }
+        }
+
+        public Enemy GetRandomEnemy()
+        {
+            return Enemies[Random.Range(0, Enemies.Count)];
         }
     }
 }

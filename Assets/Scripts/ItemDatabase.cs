@@ -6,8 +6,8 @@ namespace TextRPG
 {
     public class ItemDatabase : MonoBehaviour
     {
-        public static List<string> Items { get; set; } = new List<string>();
-        public static ItemDatabase Instance { get;  private set; }
+        public List<string> Items { get; set; } = new List<string>();
+        public static ItemDatabase Instance { get;  set; }
 
         // Called before any start method is called, which is why we are using it - we 
         // want to ensure our items list is populated before any Players or other characthers
@@ -31,6 +31,12 @@ namespace TextRPG
             Items.Add("Empty Chalice");
             Items.Add("Bowtie");
         }
-    }
+
+            public string GetRandomItem()
+            {
+                int itemIndex =  Random.Range(0, ItemDatabase.Instance.Items.Count);
+                return Items[itemIndex];
+            }
+        }
 }
 
