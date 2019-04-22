@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TextRPG
 {
-    public class ItemChest : MonoBehaviour
+    public class ItemChest
     {
         public string Item { get; set; }
         public int Gold { get; set; }
