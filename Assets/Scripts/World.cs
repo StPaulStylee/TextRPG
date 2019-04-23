@@ -14,11 +14,12 @@ namespace TextRPG
         {
             // This defines the size of our 2D array of rooms
             Dungeon = new Room[(int)DungeonGrid.x, (int)DungeonGrid.y];
-            GenerateFloor();
+            StartCoroutine(GenerateFloor());
         }
 
-        public void GenerateFloor()
+        public IEnumerator GenerateFloor()
         {
+            Debug.Log("Generating Floor.");
             for (int x = 0; x < DungeonGrid.x; x++)
             {
                 for (int y = 0; y < DungeonGrid.y; y++)
@@ -30,6 +31,13 @@ namespace TextRPG
                     };
                 }
             }
+
+            // This will execute everything above this yield statement then once it get's here,
+            // it will wait for 5 seconds before it resumes - maintaining all of the state from before
+            // but in a completely different frame (non-blocking)
+            Debug.Log("Finding Exit Location...");
+            yield return new WaitForSeconds(5);
+
             // Assign one of our rooms to be an exitLocation for the Dungeon, remember that we set DungeonGrid 
             // values from the inspector
             Vector2 exitLocation = new Vector2((int)Random.Range(0, DungeonGrid.x), (int)Random.Range(0, DungeonGrid.y));
