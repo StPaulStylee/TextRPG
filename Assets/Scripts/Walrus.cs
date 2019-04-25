@@ -14,6 +14,7 @@ namespace TextRPG
             Defense = 5;
             Gold = 30;
             Inventory.Add("Walrus Tooth");
+            Description = "A blubbering Walrus missing one eye.";
         }
 
         // Update is called once per frame
