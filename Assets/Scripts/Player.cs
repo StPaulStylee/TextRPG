@@ -22,8 +22,9 @@ namespace TextRPG
             Inventory = new List<string>();
             RoomIndex = new Vector2(2, 2);
             Room = world.Dungeon[(int)RoomIndex.x, (int)RoomIndex.y];
-            // Ensure our starting room is empty
-            world.Dungeon[(int)RoomIndex.x, (int)RoomIndex.y].IsEmpty = true;
+            // Ensure our starting room is empty - Don't love this, starting room should 
+            // probably be created in World and then assigned to the player
+            Room.IsEmpty = true;
         }
 
         public void AddItem(string item)
@@ -67,10 +68,10 @@ namespace TextRPG
 
         public void Move(int direction)
         {
-            if (this.Room.Enemy)
-            {
-                return;
-            }
+            //if (this.Room.Enemy)
+            //{
+            //    return;
+            //}
             // Move north if you're not against the northern wall
             // North and West are different as they will always be checking on Zero
             // East and south are more dynamic because we can change the size of the dungeon
@@ -99,7 +100,10 @@ namespace TextRPG
                 Journal.Instance.Log("You wander West...");
                 RoomIndex += Vector2.left;
             }
-            Investigate();
+            if (this.Room.RoomIndex != RoomIndex)
+            {
+                Investigate();
+            }
         }
     }
 }
