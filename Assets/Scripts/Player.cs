@@ -10,6 +10,8 @@ namespace TextRPG
         public Room Room { get; set; }
         [SerializeField]
         private World world;
+        [SerializeField]
+        Encounter encounter;
         // Start is called before the first frame update
         void Start()
         {
@@ -48,6 +50,7 @@ namespace TextRPG
         public void Investigate()
         {
             this.Room = world.Dungeon[(int)RoomIndex.x, (int)RoomIndex.y];
+            encounter.DisableDynamicControls();
             if (this.Room.IsEmpty)
             {
                 Journal.Instance.Log("You find yourself in an empty room.");
@@ -59,6 +62,7 @@ namespace TextRPG
             else if (this.Room.Enemy != null)
             {
                 Journal.Instance.Log("You've encounterd an " + Room.Enemy.Description + ". Fight or flight?");
+                encounter.EnableCombatButtons();
             }
             else if (this.Room.IsExit)
             {

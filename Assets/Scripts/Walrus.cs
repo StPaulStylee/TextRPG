@@ -16,11 +16,5 @@ namespace TextRPG
             Inventory.Add("Walrus Tooth");
             Description = "A blubbering Walrus missing one eye.";
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
