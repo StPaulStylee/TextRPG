@@ -41,22 +41,29 @@ namespace TextRPG
 
         public void Attack()
         {
-            int playerDamageAmount = (int)Random.value * (player.Attack - Enemy.Defense);
-            int enemyDamageAmount = (int)Random.value * (Enemy.Attack - player.Defense);
+            int playerDamageAmount = Mathf.RoundToInt(Random.value * (player.Attack - Enemy.Defense));
+            int enemyDamageAmount = Mathf.RoundToInt(Random.value * (Enemy.Attack - player.Defense));
             Journal.Instance.Log("<color=#59ffa1>You attacked, dealing <b>" + playerDamageAmount + "</b> damage!</color>");
-            Journal.Instance.Log("<color=#59ffa1>You enemy relatiated, dealing<b>" + enemyDamageAmount + "</b> damage!</color>");
+            Journal.Instance.Log("<color=#59ffa1>You enemy relatiated, dealing <b>" + enemyDamageAmount + "</b> damage!</color>");
             player.TakeDamage(enemyDamageAmount);
             Enemy.TakeDamage(playerDamageAmount);
         }
 
         public void Flee()
         {
-            int enemyDamageAmount = (int)(Random.value * (Enemy.Attack - (player.Defense * 0.5f)));
+            int enemyDamageAmount = Enemy.Attack - player.Defense > 0 ? (int)((Enemy.Attack - player.Defense) * 0.5f) : 1;
             player.Room.Enemy = null;
             player.TakeDamage(enemyDamageAmount);
             Journal.Instance.Log("<color=#59ffa1>You fled, but not before taking <b>" + enemyDamageAmount + "</b> damage!</color>");
             player.Investigate();
         }
 
+        public void ExitFloor()
+        {
+            // Create a new floor == exit current floor
+            StartCoroutine(player.world.GenerateFloor());
+            player.Floor += 1;
+            Journal.Instance.Log("You've found an exit to another floor. You are now on Floor: " + player.Floor);
+        }
     }
 }

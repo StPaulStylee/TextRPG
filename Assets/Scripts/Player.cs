@@ -8,8 +8,7 @@ namespace TextRPG
     {
         public int Floor { get; set; }
         public Room Room { get; set; }
-        [SerializeField]
-        private World world;
+        public World world;
         [SerializeField]
         Encounter encounter;
         // Start is called before the first frame update
@@ -67,6 +66,7 @@ namespace TextRPG
             else if (this.Room.IsExit)
             {
                 Journal.Instance.Log("You've found the exit to the next floor. Go to it?");
+                encounter.EnableExit();
             }
         }
 
