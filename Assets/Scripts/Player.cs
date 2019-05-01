@@ -57,6 +57,7 @@ namespace TextRPG
             else if (this.Room.ItemChest != null)
             {
                 Journal.Instance.Log("You've found an item chest. Open it?");
+                encounter.EnableItemChest();
             }
             else if (this.Room.Enemy != null)
             {

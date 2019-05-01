@@ -15,7 +15,8 @@ namespace TextRPG
 
         public override void Die()
         {
-            Debug.Log("The character that die was an enemy!");
+            Debug.Log("The character that died was an enemy!");
+            Encounter.OnEnemyDie();
         }
     }
 }
