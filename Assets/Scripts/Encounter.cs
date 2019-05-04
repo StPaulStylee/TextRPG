@@ -35,6 +35,7 @@ namespace TextRPG
             // Enable the attack and flee buttons
             dynamicControls[0].interactable = true;
             dynamicControls[1].interactable = true;
+            UIController.OnEnemyUpdate(this.Enemy);
         }
 
         public void EnableExit()
@@ -82,6 +83,7 @@ namespace TextRPG
                 this.Enemy.Description, this.Enemy.Inventory[0], this.Enemy.Gold));
             player.Room.Enemy = null;
             player.Room.IsEmpty = true;
+            UIController.OnEnemyUpdate(null);
             player.Investigate();
         }
 

@@ -10,6 +10,7 @@ namespace TextRPG
         public override void TakeDamage(int amount)
         {
             base.TakeDamage(amount);
+            UIController.OnEnemyUpdate(this);
             Debug.Log("The enemy just took damage!");
         }
 

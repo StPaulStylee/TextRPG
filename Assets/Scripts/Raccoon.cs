@@ -14,7 +14,7 @@ namespace TextRPG
             Defense = 3;
             Gold = 20;
             Inventory.Add("Bandit Mask");
-            Description = "A rabid Raccoon with blood pooring out of it's eyes.";
+            Description = "Raccoon";
         }
     }
 }

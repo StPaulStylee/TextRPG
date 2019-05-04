@@ -26,18 +26,22 @@ namespace TextRPG
             // Ensure our starting room is empty - Don't love this, starting room should 
             // probably be created in World and then assigned to the player
             Room.IsEmpty = true;
+            UIController.OnPlayerStatChange();
+            UIController.OnPlayerInventoryChange();
         }
 
         public void AddItem(string item)
         {
             Journal.Instance.Log("You received  an item: " + item);
             Inventory.Add(item);
+            UIController.OnPlayerInventoryChange();
         }
 
         public override void TakeDamage(int amount)
         {
             Debug.Log("Player TakeDamage.");
             base.TakeDamage(amount);
+            UIController.OnPlayerStatChange();
         }
 
         public override void Die()
