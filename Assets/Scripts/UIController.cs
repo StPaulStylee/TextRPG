@@ -27,7 +27,6 @@ namespace TextRPG
             OnPlayerStatChange += UpdatePlayerStats;
             OnPlayerInventoryChange += UpdatePlayerInventory;
             OnEnemyUpdate += UpdateEnemyStats;
-            playerInventoryText.text = "Items: ";
         }
 
         // Update is called once per frame
@@ -58,6 +57,7 @@ namespace TextRPG
 
         public void UpdatePlayerInventory()
         {
+            playerInventoryText.text = "Items: ";
             foreach (string item in player.Inventory)
             {
                 playerInventoryText.text += item + ", ";

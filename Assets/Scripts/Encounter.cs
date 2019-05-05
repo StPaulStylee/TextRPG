@@ -61,7 +61,8 @@ namespace TextRPG
         public void Flee()
         {
             int enemyDamageAmount = Enemy.Attack - player.Defense > 0 ? (int)((Enemy.Attack - player.Defense) * 0.5f) : 1;
-            //player.Room.Enemy = null;
+            player.Room.Enemy = null;
+            UIController.OnEnemyUpdate(null);
             player.TakeDamage(enemyDamageAmount);
             Journal.Instance.Log("<color=#59ffa1>You fled, but not before taking <b>" + enemyDamageAmount + "</b> damage!</color>");
             //player.Investigate();
